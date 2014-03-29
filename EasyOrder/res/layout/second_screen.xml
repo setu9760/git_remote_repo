@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ssparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center" >
+
+    <GridView
+        android:id="@+id/gridview1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth" >
+    </GridView>
+
+    <LinearLayout
+        android:id="@+id/btnlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btnsubmitorder"
+            style="@android:attr/buttonBarButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#E0F8E6"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Pay now"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btnresetorder"
+            style="@android:attr/buttonBarButtonStyle"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#E0F8E6"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Reset order"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtorderstatus"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_above="@id/btnlayout"
+        android:layout_alignLeft="@id/gridview1"
+        android:layout_margin="10dp"
+        android:gravity="left"
+        android:maxLines="15"
+        android:scrollbars="vertical"
+        android:text="" />
+
+</RelativeLayout>
