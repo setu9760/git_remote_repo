@@ -31,9 +31,9 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	private List<Selection> selectionlist;
 	private List<Integer> sel_id = new ArrayList<Integer>();
 	private List<String> sel_list = new ArrayList<String>();
-	
+
 	private List<Order> orderlist = new ArrayList<Order>();
-	
+
 	DBhelper db;
 	Order order;
 
@@ -94,6 +94,10 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		switch (v.getId()) {
 		case R.id.btnsubmitorder:
 
+			for (Order order : orderlist) {
+				Log.i("Setu", "item " + order.getProduct());
+				Log.i("Setu", "price is " + order.getPrice());
+			}
 			break;
 		case R.id.btnresetorder:
 			dialog1 = new AlertDialog.Builder(this);
@@ -122,7 +126,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 				/*
 				 * 
-				 * need to add some logic here
+				 * need to add some logic here to delete the order from the
+				 * order list still working on it on 31st March.
 				 */
 				btnsubmitorder.setEnabled(false);
 				btnresetorder.setEnabled(false);
@@ -162,6 +167,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		Double price = bundle.getDouble("key_price");
 		Toast.makeText(this, "product: " + item + " price " + price,
 				Toast.LENGTH_LONG).show();
-		orderlist.add(new Order(item,price));
+		orderlist.add(new Order(item, price));
 	}
 }
