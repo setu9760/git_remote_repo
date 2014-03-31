@@ -14,7 +14,6 @@ public class Order {
 	private double price;
 
 	public Order() {
-
 	}
 
 	public Order(String product, double price) {

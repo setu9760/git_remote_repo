@@ -31,6 +31,9 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	private List<Selection> selectionlist;
 	private List<Integer> sel_id = new ArrayList<Integer>();
 	private List<String> sel_list = new ArrayList<String>();
+	
+	private List<Order> orderlist = new ArrayList<Order>();
+	
 	DBhelper db;
 	Order order;
 
@@ -159,5 +162,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		Double price = bundle.getDouble("key_price");
 		Toast.makeText(this, "product: " + item + " price " + price,
 				Toast.LENGTH_LONG).show();
+		orderlist.add(new Order(item,price));
 	}
 }
