@@ -117,8 +117,8 @@ public class DBhelper extends SQLiteOpenHelper {
 	}
 
 	/*
-	 * following method is for development stage only and is not to be used or kept in
-	 * the code as it allows direct access to the product table which is
+	 * following method is for development stage only and is not to be used or
+	 * kept in the code as it allows direct access to the product table which is
 	 * unnecessary for this application
 	 */
 	public List<All_products> get_all_products_list() {
@@ -133,7 +133,8 @@ public class DBhelper extends SQLiteOpenHelper {
 			do {
 				All_products all_products = new All_products();
 				all_products.set_id(Integer.parseInt(cursor.getString(0)));
-				all_products.set_id(Integer.parseInt(cursor.getString(1)));
+				all_products
+						.set_catagory(Integer.parseInt(cursor.getString(1)));
 				all_products.set_item(cursor.getString(2));
 				all_products.set_price(Float.parseFloat(cursor.getString(3)));
 				all_products.set_veg(Integer.parseInt(cursor.getString(4)));
@@ -144,9 +145,10 @@ public class DBhelper extends SQLiteOpenHelper {
 		cursor.close();
 		return product_list;
 	}
-	////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////
-	
+
+	// //////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////
+
 	public List<All_products> get_one_catagory_product(int p_catagory) {
 		List<All_products> products_list = new ArrayList<All_products>();
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -156,7 +158,8 @@ public class DBhelper extends SQLiteOpenHelper {
 			do {
 				All_products all_products = new All_products();
 				all_products.set_id(Integer.parseInt(cursor.getString(0)));
-				all_products.set_id(Integer.parseInt(cursor.getString(1)));
+				all_products
+						.set_catagory((Integer.parseInt(cursor.getString(1))));
 				all_products.set_item(cursor.getString(2));
 				all_products.set_price(Float.parseFloat(cursor.getString(3)));
 				all_products.set_veg(Integer.parseInt(cursor.getString(4)));
