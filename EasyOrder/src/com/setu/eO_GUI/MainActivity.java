@@ -60,13 +60,6 @@ public class MainActivity extends Activity implements OnClickListener,
 			startActivity(intent);
 			break;
 		case R.id.btnregister:
-			try {
-				Intent intent2 = new Intent(MainActivity.this,
-						Expandable_activity.class);
-				startActivity(intent2);
-			} catch (Exception e) {
-				Log.e("Setu", "error while calling btnregister");
-			}
 
 			break;
 		case R.id.btnreset:
