@@ -12,5 +12,10 @@
     <string name="register">Register</string>
     <string name="title_activity_splash_activity">Splash_activity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="btnsubmit">Pay now</string>
+    <string name="btnreset">Reset order</string>
+    <string name="imgveg">Veg or Non-veg</string>
+    <string name="imgadd">Add</string>
+    <string name="imgproduct">Product</string>
 
 </resources>
