@@ -1,5 +1,6 @@
 package com.setu.eO_GUI;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
@@ -22,11 +24,17 @@ import android.widget.AdapterView.OnItemClickListener;
 public class Second_activity extends Activity implements OnItemClickListener,
 		android.view.View.OnClickListener {
 
+	private final Double VAT = 0.065;
+
 	private ImageAdap imageadap;
 	private GridView gridview;
 	private AlertDialog.Builder dialog1;
 	private Button btnsubmitorder;
 	private Button btnresetorder;
+	private TextView txtorderstatus;
+	private Double subtotal = 0.0;
+	private Double total = 0.0;
+	private Double taxes = 0.0;
 
 	private List<Selection> selectionlist;
 	private List<Integer> sel_id = new ArrayList<Integer>();
@@ -56,6 +64,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		gridview = (GridView) findViewById(R.id.gridview1);
 		btnsubmitorder = (Button) findViewById(R.id.btnsubmitorder);
 		btnresetorder = (Button) findViewById(R.id.btnresetorder);
+		txtorderstatus = (TextView) findViewById(R.id.txtorderstatus);
+		setorderstatus(subtotal);
 
 		btnsubmitorder.setOnClickListener(this);
 		btnresetorder.setOnClickListener(this);
@@ -75,7 +85,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		bundle.putInt("KEY_P_POSITION", ++position);
 		Toast.makeText(this, position + "   ", Toast.LENGTH_LONG).show();
 		intent.putExtras(bundle);
-		startActivityForResult(intent, 0);
+		startActivityForResult(intent, 1);
 
 		btnsubmitorder.setEnabled(true);
 		btnresetorder.setEnabled(true);
@@ -109,6 +119,25 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		}
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK) {
+			Bundle bundle = data.getExtras();
+			Log.i("Setu", "request code is:" + requestCode + "result code is: "
+					+ resultCode);
+
+			String item = bundle.getString("key_product");
+			Double price = bundle.getDouble("key_price");
+			Toast.makeText(this, "product: " + item + " price " + price,
+					Toast.LENGTH_LONG).show();
+			orderlist.add(new Order(item, price));
+			setorderstatus(price);
+		} else {
+
+		}
+	}
+
 	/**
 	 * @param dialog
 	 * @param title
@@ -131,6 +160,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 				 */
 				btnsubmitorder.setEnabled(false);
 				btnresetorder.setEnabled(false);
+				setorderstatus(subtotal = 0.0);
+
 			}
 		});
 		dialog1.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -143,7 +174,23 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		alert.show();
 	}
 
-	class newthread extends AsyncTask<Void, Void, Void> {
+	public void setorderstatus(Double subtotal) {
+		this.subtotal += subtotal;
+		this.taxes = (this.subtotal * VAT);
+		this.total = (this.subtotal + this.taxes);
+
+		DecimalFormat formmater = new DecimalFormat("##0.00");
+		String subt, ttl, tax;
+		subt = formmater.format(this.subtotal);
+		tax = formmater.format(this.taxes);
+		ttl = formmater.format(this.total);
+
+		String orderstatus = "Subtotal: £" + subt + "\n" + "VAT: £" + tax
+				+ "\n" + "Total: £" + ttl;
+		txtorderstatus.setText(orderstatus);
+	}
+
+	private class newthread extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... params) {
@@ -156,17 +203,5 @@ public class Second_activity extends Activity implements OnItemClickListener,
 			super.onPostExecute(result);
 			gridview.setAdapter(imageadap);
 		}
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(0, resultCode, data);
-
-		Bundle bundle = data.getExtras();
-		String item = bundle.getString("key_product");
-		Double price = bundle.getDouble("key_price");
-		Toast.makeText(this, "product: " + item + " price " + price,
-				Toast.LENGTH_LONG).show();
-		orderlist.add(new Order(item, price));
 	}
 }

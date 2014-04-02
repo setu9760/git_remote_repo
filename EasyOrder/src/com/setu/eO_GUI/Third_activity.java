@@ -5,11 +5,8 @@ import java.util.List;
 
 import com.setu.EasyOrder.*;
 import com.setu.eO_Adapters.Products_adapter;
-import com.setu.eO_GUI.Second_activity.newthread;
 import com.setu.eO_Logic.All_products;
 import com.setu.eO_Logic.DBhelper;
-import com.setu.eO_Logic.Selection;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class Third_activity extends Activity implements OnItemClickListener {
 
@@ -27,7 +23,6 @@ public class Third_activity extends Activity implements OnItemClickListener {
 	private List<String> p_item = new ArrayList<String>();
 	private List<Double> p_price = new ArrayList<Double>();
 	private List<Integer> p_veg = new ArrayList<Integer>();
-	private String choice;
 	private Products_adapter product_adapter;
 
 	DBhelper db;
@@ -66,8 +61,15 @@ public class Third_activity extends Activity implements OnItemClickListener {
 		bundle.putString("key_product", p_item.get(position));
 		bundle.putDouble("key_price", p_price.get(position));
 		intent.putExtras(bundle);
-		setResult(0, intent);
+		setResult(RESULT_OK, intent);
 		finish();
-
 	}
+
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent();
+		setResult(RESULT_CANCELED, intent);
+		super.onBackPressed();
+	}
+
 }
