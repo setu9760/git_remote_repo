@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,7 @@ public class Products_adapter extends BaseAdapter {
 	public Products_adapter(Context context, List<String> p_item,
 			List<Double> p_price, List<Integer> p_veg) {
 		this.context = context;
-		this.inflater = (LayoutInflater) context
+		this.inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		this.products = p_item;

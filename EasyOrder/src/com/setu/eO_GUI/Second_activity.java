@@ -2,6 +2,7 @@ package com.setu.eO_GUI;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.setu.EasyOrder.*;
@@ -91,7 +92,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		btnresetorder.setEnabled(true);
 
 		/*
-		 * need to add some logic here perform some programming on he order
+		 * need to add some logic here perform some programming on the order
 		 * object
 		 */
 		// order.additem(temp);
@@ -117,8 +118,10 @@ public class Second_activity extends Activity implements OnItemClickListener,
 			alert.setNegativeButton("No",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-
+							/*
+							 * This button does nothing apart from closing the
+							 * dialogbox
+							 */
 						}
 					});
 			alert.show();

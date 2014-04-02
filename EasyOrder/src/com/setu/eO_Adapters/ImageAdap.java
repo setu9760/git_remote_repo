@@ -20,9 +20,10 @@ public class ImageAdap extends BaseAdapter {
 	private LayoutInflater inflator;
 
 	public ImageAdap(Context context, List<String> items, List<Integer> id) {
-		this.inflator = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
 		this.context = context;
+		this.inflator = (LayoutInflater) this.context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.items = new String[items.size()];
 		this.id = new Integer[id.size()];
 		for (int i = 0; i < items.size(); i++) {

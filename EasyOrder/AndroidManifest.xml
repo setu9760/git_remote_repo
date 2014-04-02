@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +27,8 @@
         <activity android:name="com.setu.eO_GUI.Third_activity" >
         </activity>
         <activity android:name="com.setu.eO_GUI.Expandable_activity" >
+        </activity>
+        <activity android:name="com.setu.EasyOrder.Splash_activity" >
         </activity>
     </application>
 
