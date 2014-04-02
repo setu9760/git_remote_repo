@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="14" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +26,10 @@
         </activity>
         <activity android:name="com.setu.eO_GUI.Third_activity" >
         </activity>
-        <activity android:name="com.setu.eO_GUI.Expandable_activity" >
+        <activity
+            android:name="com.setu.eO_GUI.Spash_activity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
     </application>
 

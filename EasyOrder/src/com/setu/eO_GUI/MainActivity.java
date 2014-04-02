@@ -60,7 +60,8 @@ public class MainActivity extends Activity implements OnClickListener,
 			startActivity(intent);
 			break;
 		case R.id.btnregister:
-
+			Intent intent1 = new Intent(MainActivity.this, Spash_activity.class);
+			startActivity(intent1);
 			break;
 		case R.id.btnreset:
 
