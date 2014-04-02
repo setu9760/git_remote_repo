@@ -5,26 +5,26 @@
     android:background="@drawable/android_splash" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/EOsplashlabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Easy Order"
-        android:textColor="@color/yellow"
+        android:text="@string/splashlabel"
+        android:textColor="@color/almond"
         android:textSize="40sp"
         android:textStyle="italic"
         android:typeface="monospace" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/EOsplashtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/EOsplashlabel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Fast food made faster"
-        android:textColor="@color/yellow"
+        android:text="@string/splashtext"
+        android:textColor="@color/almond"
         android:textSize="20sp"
         android:textStyle="italic"
         android:typeface="monospace" >
@@ -32,9 +32,10 @@
 
     <ProgressBar
         android:id="@+id/progressBar1"
+        style="@color/almond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/EOsplashlabel"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

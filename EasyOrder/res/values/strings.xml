@@ -17,5 +17,6 @@
     <string name="imgveg">Veg or Non-veg</string>
     <string name="imgadd">Add</string>
     <string name="imgproduct">Product</string>
-
+	<string name="splashlabel">Easy order</string>
+	<string name="splashtext">Fast-food made faster</string>
 </resources>

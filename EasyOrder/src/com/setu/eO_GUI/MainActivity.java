@@ -3,7 +3,6 @@ package com.setu.eO_GUI;
 import com.setu.EasyOrder.R;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +13,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button btnlogin;
 	private Button btnreset;
 	private Button btnregister;
-	private ProgressDialog progress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +26,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		btnlogin.setOnClickListener(this);
 		btnregister.setOnClickListener(this);
 		btnreset.setOnClickListener(this);
-
-		progress = new ProgressDialog(this);
-		progress.setTitle("Please wait...");
-		progress.setMessage("Authenticating Login..");
 
 	}
 
@@ -52,10 +46,5 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		}
 
-	}
-
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
 	}
 }

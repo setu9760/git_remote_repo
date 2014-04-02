@@ -90,14 +90,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 		btnsubmitorder.setEnabled(true);
 		btnresetorder.setEnabled(true);
-
-		/*
-		 * need to add some logic here perform some programming on the order
-		 * object
-		 */
-		// order.additem(temp);
-		// Log.i("Setu", "Items in the order... " + order.getsize());
-
 	}
 
 	@Override
@@ -133,7 +125,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnsubmitorder:
-
+			Intent intent = new Intent(this, Checkout_activity.class);
+			Bundle bundle = new Bundle();
 			for (Order order : orderlist) {
 				Log.i("Setu", "item " + order.getProduct());
 				Log.i("Setu", "price is " + order.getPrice());
@@ -159,9 +152,11 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 			String item = bundle.getString("key_product");
 			Double price = bundle.getDouble("key_price");
-			Toast.makeText(this, "product: " + item + " price " + price,
+			Toast.makeText(this, item + " added in the order",
 					Toast.LENGTH_LONG).show();
 			orderlist.add(new Order(item, price));
+			btnresetorder.setEnabled(true);
+			btnsubmitorder.setEnabled(true);
 			setorderstatus(price);
 		} else {
 
@@ -188,6 +183,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 				 * need to add some logic here to delete the order from the
 				 * order list still working on it on 31st March.
 				 */
+				orderlist.clear();
 				btnsubmitorder.setEnabled(false);
 				btnresetorder.setEnabled(false);
 				setorderstatus(subtotal = 0.0);
@@ -214,7 +210,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		subt = formmater.format(this.subtotal);
 		tax = formmater.format(this.taxes);
 		ttl = formmater.format(this.total);
-
+		Log.i("Setu", "items in the order now: " + orderlist.size());
 		String orderstatus = "Subtotal: £" + subt + "\n" + "VAT: £" + tax
 				+ "\n" + "Total: £" + ttl;
 		txtorderstatus.setText(orderstatus);
