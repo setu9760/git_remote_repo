@@ -46,25 +46,37 @@ public class Products_adapter extends BaseAdapter {
 			holder.product = (TextView) convertView
 					.findViewById(R.id.list_product);
 			holder.price = (TextView) convertView.findViewById(R.id.list_price);
-			convertView.setTag(holder);
+
 			holder.image = (ImageView) convertView
 					.findViewById(R.id.list_vegimage);
+			holder.description = (TextView) convertView
+					.findViewById(R.id.product_disc);
+			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.product.setText(this.products.get(position));
-		holder.price.setText( String.valueOf(this.price.get(position)));
+		holder.price.setText("£" + String.valueOf(this.price.get(position)));
 		Integer temp_veg = _veg.get(position);
 		switch (temp_veg) {
 		case 0:
 			holder.image.setImageResource(R.drawable.vege_img);
+			holder.description.setText("Product Descripton: \n"
+					+ "Allergy Advice: N/A \n" + "Suitable for vegetarian.");
 			break;
 		case 1:
 			holder.image.setImageResource(R.drawable.non_veg_img);
+			holder.description.setText("Product Description: \n"
+					+ "All meat is HCA certified. \n"
+					+ "Not-suitable for vegetarian.");
+			break;
+		case -1:
+
 			break;
 		}
 		return convertView;
 	}
+
 	@Override
 	public int getCount() {
 
@@ -86,6 +98,7 @@ public class Products_adapter extends BaseAdapter {
 	private static class ViewHolder {
 		ImageView image;
 		TextView product;
+		TextView description;
 		TextView price;
 	}
 

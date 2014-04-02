@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:background="@color/black"
     android:gravity="center"
     android:orientation="horizontal" >
 
@@ -13,14 +14,31 @@
         android:layout_gravity="center_vertical"
         android:layout_margin="4dp" />
 
-    <TextView
-        android:id="@+id/list_product"
+    <LinearLayout
+        android:id="@+id/text_boxes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_weight="3"
-        android:text="Product"
-        android:textSize="30sp" />
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/list_product"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="2"
+            android:textColor="@color/yellow"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/product_disc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:textColor="@color/yellow"
+            android:textSize="15sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/list_price"
@@ -28,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:gravity="center"
-        android:text="£34"
-        android:textSize="27sp" />
+        android:textColor="@color/yellow"
+        android:textSize="25sp" />
 
 </LinearLayout>
