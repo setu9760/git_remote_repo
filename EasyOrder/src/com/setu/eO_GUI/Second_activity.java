@@ -100,6 +100,33 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	}
 
 	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.setTitle("Alert");
+			alert.setMessage("Your order will reset." + "\n" + "Are you sure?");
+			alert.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();
+						}
+					});
+			alert.setNegativeButton("No",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+
+						}
+					});
+			alert.show();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnsubmitorder:

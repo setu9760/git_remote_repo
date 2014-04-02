@@ -63,6 +63,6 @@
         android:layout_margin="10dp"
         android:gravity="left"
         android:maxLines="15"
-        android:scrollbars="vertical" />
+        android:textColor="@color/almond" />
 
 </RelativeLayout>
