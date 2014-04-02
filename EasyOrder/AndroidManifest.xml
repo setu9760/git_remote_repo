@@ -28,8 +28,6 @@
         </activity>
         <activity android:name="com.setu.eO_GUI.Expandable_activity" >
         </activity>
-        <activity android:name="com.setu.EasyOrder.Splash_activity" >
-        </activity>
     </application>
 
 </manifest>
