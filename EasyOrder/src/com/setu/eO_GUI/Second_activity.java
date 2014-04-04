@@ -2,7 +2,6 @@ package com.setu.eO_GUI;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import com.setu.EasyOrder.*;
@@ -41,7 +40,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	private List<Integer> sel_id = new ArrayList<Integer>();
 	private List<String> sel_list = new ArrayList<String>();
 
-	private List<Order> orderlist = new ArrayList<Order>();
+	public static List<Order> orderlist = new ArrayList<Order>();
 
 	DBhelper db;
 	Order order;
@@ -126,11 +125,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		switch (v.getId()) {
 		case R.id.btnsubmitorder:
 			Intent intent = new Intent(this, Checkout_activity.class);
-			Bundle bundle = new Bundle();
-			for (Order order : orderlist) {
-				Log.i("Setu", "item " + order.getProduct());
-				Log.i("Setu", "price is " + order.getPrice());
-			}
+			startActivity(intent);
 			break;
 		case R.id.btnresetorder:
 			dialog1 = new AlertDialog.Builder(this);
@@ -217,7 +212,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	}
 
 	private class newthread extends AsyncTask<Void, Void, Void> {
-
 		@Override
 		protected Void doInBackground(Void... params) {
 			imageadap = new ImageAdap(Second_activity.this, sel_list, sel_id);

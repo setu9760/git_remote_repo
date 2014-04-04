@@ -35,7 +35,7 @@ public class Third_activity extends Activity implements OnItemClickListener {
 
 		Bundle bundle = getIntent().getExtras();
 		int position = bundle.getInt("KEY_P_POSITION");
-
+		
 		productlist = db.get_one_catagory_product(position);
 
 		for (All_products all_products : productlist) {
