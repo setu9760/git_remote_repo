@@ -149,7 +149,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 			Double price = bundle.getDouble("key_price");
 			Toast.makeText(this, item + " added in the order",
 					Toast.LENGTH_LONG).show();
-			orderlist.add(new Order(item, price));
 			btnresetorder.setEnabled(true);
 			btnsubmitorder.setEnabled(true);
 			setorderstatus(price);

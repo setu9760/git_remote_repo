@@ -7,6 +7,8 @@ import com.setu.EasyOrder.*;
 import com.setu.eO_Adapters.Products_adapter;
 import com.setu.eO_Logic.All_products;
 import com.setu.eO_Logic.DBhelper;
+import com.setu.eO_Logic.Order;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,7 +61,7 @@ public class Third_activity extends Activity implements OnItemClickListener {
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
 		bundle.putString("key_product", p_item.get(position));
-		bundle.putDouble("key_price", p_price.get(position));
+		Second_activity.orderlist.add(new Order(p_item.get(position),p_price.get(position)));
 		intent.putExtras(bundle);
 		setResult(RESULT_OK, intent);
 		finish();
