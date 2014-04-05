@@ -62,7 +62,7 @@ public class Success_activity extends Activity {
 		File externalpath = Environment.getExternalStorageDirectory();
 		File newfile = new File(externalpath, "order.txt");
 		StringBuilder sb = new StringBuilder();
-
+		sb.append("Summary" + System.getProperty("line.separator"));
 		FileInputStream fileinputstream;
 		try {
 			fileinputstream = new FileInputStream(newfile);
@@ -70,8 +70,7 @@ public class Success_activity extends Activity {
 					new InputStreamReader(fileinputstream));
 
 			String temp;
-			while (bufferedReader.readLine() != null) {
-				temp = bufferedReader.readLine();
+			while ((temp = bufferedReader.readLine()) != null) {
 				sb.append(temp);
 				sb.append(System.getProperty("line.separator"));
 			}
