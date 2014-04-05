@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		btnchkorders.setOnClickListener(this);
 		btncontactus.setOnClickListener(this);
 		btnrateus.setOnClickListener(this);
-
+		
 	}
 
 	@Override

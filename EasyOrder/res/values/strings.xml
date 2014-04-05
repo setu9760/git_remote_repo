@@ -26,5 +26,8 @@
     <string name="emailhint">abc_02@xyz.com</string>
     <string name="btnsubmit">Submit</string>
     <string name="tsorder">Total payment due</string>
+    <string name="lblthankyou">THANK YOU</string>
+    <string name="lblorderplaced">Order placed</string>
+    <string name="btnok">OK </string>
 
 </resources>

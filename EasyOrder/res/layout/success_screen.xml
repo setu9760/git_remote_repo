@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    <TextView />
-    
+    android:layout_height="match_parent"
+    android:background="@color/black_cat"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/lblthankyou"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/lblthankyou"
+        android:textColor="@color/almond"
+        android:textSize="26sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/lblorderplaced"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblthankyou"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/lblorderplaced"
+        android:textColor="@color/almond"
+        android:textSize="22sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/lblsuccessmessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnok"
+        android:layout_below="@+id/lblorderplaced"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/btnok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/btnok"
+        android:textColor="@color/almond"
+        android:textSize="23sp"
+        android:textStyle="italic" />
 
 </RelativeLayout>
