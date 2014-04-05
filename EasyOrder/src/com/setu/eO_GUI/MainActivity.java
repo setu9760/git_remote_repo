@@ -10,38 +10,43 @@ import android.widget.*;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-	private Button btnlogin;
-	private Button btnreset;
-	private Button btnregister;
+	private Button btnordernow;
+	private Button btnchkorders;
+	private Button btncontactus;
+	private Button btnrateus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		btnlogin = (Button) findViewById(R.id.btnlogin);
-		btnregister = (Button) findViewById(R.id.btnregister);
-		btnreset = (Button) findViewById(R.id.btnreset);
+		btnordernow = (Button) findViewById(R.id.btnordernow);
+		btnchkorders = (Button) findViewById(R.id.btnchkorders);
+		btncontactus = (Button) findViewById(R.id.btncontactus);
+		btnrateus = (Button)findViewById(R.id.btnrating);
 
-		btnlogin.setOnClickListener(this);
-		btnregister.setOnClickListener(this);
-		btnreset.setOnClickListener(this);
+		btnordernow.setOnClickListener(this);
+		btnchkorders.setOnClickListener(this);
+		btncontactus.setOnClickListener(this);
+		btnrateus.setOnClickListener(this);
 
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btnlogin:
+		case R.id.btnordernow:
 			Intent intent = new Intent(MainActivity.this, Second_activity.class);
 			startActivity(intent);
 			break;
-		case R.id.btnregister:
-			Intent intent1 = new Intent(MainActivity.this, Spash_activity.class);
-			startActivity(intent1);
-			break;
-		case R.id.btnreset:
+		case R.id.btnchkorders:
 
+			break;
+		case R.id.btncontactus:
+
+			break;
+		case R.id.btnrating:
+			
 			break;
 
 		}

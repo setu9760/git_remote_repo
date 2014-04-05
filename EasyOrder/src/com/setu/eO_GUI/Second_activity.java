@@ -29,7 +29,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	private ImageAdap imageadap;
 	private GridView gridview;
 	private AlertDialog.Builder dialog1;
-	private Button btnsubmitorder;
+	private Button btncheckout;
 	private Button btnresetorder;
 	private TextView txtorderstatus;
 	private Double subtotal = 0.0;
@@ -62,18 +62,18 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		}
 
 		gridview = (GridView) findViewById(R.id.gridview1);
-		btnsubmitorder = (Button) findViewById(R.id.btnsubmitorder);
+		btncheckout = (Button) findViewById(R.id.btncheckout);
 		btnresetorder = (Button) findViewById(R.id.btnresetorder);
 		txtorderstatus = (TextView) findViewById(R.id.txtorderstatus);
-		setorderstatus(subtotal);
+		setorderstatus(this.subtotal);
 
-		btnsubmitorder.setOnClickListener(this);
+		btncheckout.setOnClickListener(this);
 		btnresetorder.setOnClickListener(this);
 		newthread newthread = new newthread();
 		newthread.execute();
 		gridview.setOnItemClickListener(this);
 
-		btnsubmitorder.setEnabled(false);
+		btncheckout.setEnabled(false);
 		btnresetorder.setEnabled(false);
 
 	}
@@ -83,12 +83,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		Intent intent = new Intent(Second_activity.this, Third_activity.class);
 		Bundle bundle = new Bundle();
 		bundle.putInt("KEY_P_POSITION", ++position);
-		Toast.makeText(this, position + "   ", Toast.LENGTH_LONG).show();
 		intent.putExtras(bundle);
 		startActivityForResult(intent, 1);
-
-		btnsubmitorder.setEnabled(true);
-		btnresetorder.setEnabled(true);
 	}
 
 	@Override
@@ -98,6 +94,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.setTitle("Alert");
 			alert.setMessage("Your order will reset." + "\n" + "Are you sure?");
+			alert.setIcon(R.drawable.warning);
 			alert.setPositiveButton("Yes",
 					new DialogInterface.OnClickListener() {
 
@@ -123,7 +120,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btnsubmitorder:
+		case R.id.btncheckout:
 			try {
 				Intent intent = new Intent(this, Checkout_activity.class);
 				startActivity(intent);
@@ -154,8 +151,11 @@ public class Second_activity extends Activity implements OnItemClickListener,
 			Toast.makeText(this, item + " added in the order",
 					Toast.LENGTH_LONG).show();
 			btnresetorder.setEnabled(true);
-			btnsubmitorder.setEnabled(true);
+			btncheckout.setEnabled(true);
+			Log.i("Setu", "price is: " + price);
+
 			setorderstatus(price);
+
 		} else {
 
 		}
@@ -172,17 +172,13 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		dialog.setTitle(title);
 		dialog.setMessage(message);
 		dialog.setCancelable(isCancelable);
+		dialog.setIcon(R.drawable.warning);
 		dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 
-				/*
-				 * 
-				 * need to add some logic here to delete the order from the
-				 * order list still working on it on 31st March.
-				 */
 				orderlist.clear();
-				btnsubmitorder.setEnabled(false);
+				btncheckout.setEnabled(false);
 				btnresetorder.setEnabled(false);
 				setorderstatus(subtotal = 0.0);
 
@@ -198,20 +194,28 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		alert.show();
 	}
 
-	public void setorderstatus(Double subtotal) {
-		this.subtotal += subtotal;
+	public void setorderstatus(Double subttotal) {
+		this.subtotal += subttotal;
 		this.taxes = (this.subtotal * VAT);
 		this.total = (this.subtotal + this.taxes);
 
 		DecimalFormat formmater = new DecimalFormat("##0.00");
-		String subt, ttl, tax;
-		subt = formmater.format(this.subtotal);
+		String subtotal, total, tax;
+		subtotal = formmater.format(this.subtotal);
 		tax = formmater.format(this.taxes);
-		ttl = formmater.format(this.total);
+		total = formmater.format(this.total);
 		Log.i("Setu", "items in the order now: " + orderlist.size());
-		String orderstatus = "Subtotal: £" + subt + "\n" + "VAT: £" + tax
-				+ "\n" + "Total: £" + ttl;
+		String orderstatus = "Order Summary " + "\n\n" + "Subtotal: £"
+				+ subtotal + "\n" + "VAT: £" + tax + "\n" + "Total: £" + total;
+		if (this.subtotal != 0) {
+			btncheckout.setEnabled(true);
+			btnresetorder.setEnabled(true);
+		} else {
+			btncheckout.setEnabled(false);
+			btnresetorder.setEnabled(false);
+		}
 		txtorderstatus.setText(orderstatus);
+
 	}
 
 	private class newthread extends AsyncTask<Void, Void, Void> {

@@ -12,9 +12,7 @@ import com.setu.eO_Logic.Order;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -59,6 +57,7 @@ public class Third_activity extends Activity implements OnItemClickListener {
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
 		bundle.putString("key_product", p_item.get(position));
+		bundle.putDouble("key_price", p_price.get(position));
 		Second_activity.orderlist.add(new Order(p_item.get(position), p_price
 				.get(position)));
 		intent.putExtras(bundle);

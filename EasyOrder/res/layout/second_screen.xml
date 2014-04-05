@@ -10,7 +10,9 @@
     <GridView
         android:id="@+id/gridview1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
+        android:layout_above="@+id/anotherlayout"
+        android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         android:gravity="center"
         android:numColumns="auto_fit"
@@ -18,51 +20,61 @@
     </GridView>
 
     <LinearLayout
-        android:id="@+id/btnlayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/anotherlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="vertical" >
+        android:layout_margin="5dp"
+        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btnsubmitorder"
-            style="@android:attr/buttonBarButtonStyle"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
+        <TextView
+            android:id="@+id/txtorderstatus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:background="#E0F8E6"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/btnsubmit"
-            android:textSize="30sp"
-            android:textStyle="italic" />
+            android:gravity="left"
+            android:maxLines="15"
+            android:padding="5dp"
+            android:textColor="@color/almond"
+            android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/btnresetorder"
-            style="@android:attr/buttonBarButtonStyle"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
+        <LinearLayout
+            android:id="@+id/btnlayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="#E0F8E6"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/btnreset"
-            android:textSize="30sp"
-            android:textStyle="italic" />
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btncheckout"
+                style="@android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                 android:text="@string/btncheckout"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/almond"
+                android:textSize="23sp"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/btnresetorder"
+                style="@android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/btnreset"
+                android:textColor="@color/almond"
+                android:textSize="23sp"
+                android:textStyle="italic" />
+        </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtorderstatus"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_above="@id/btnlayout"
-        android:layout_alignLeft="@id/gridview1"
-        android:layout_margin="10dp"
-        android:gravity="left"
-        android:maxLines="15"
-        android:textColor="@color/almond" />
 
 </RelativeLayout>
