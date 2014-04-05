@@ -1,9 +1,11 @@
 package com.setu.eO_GUI;
 
 import com.setu.EasyOrder.R;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
@@ -23,13 +25,24 @@ public class MainActivity extends Activity implements OnClickListener {
 		btnordernow = (Button) findViewById(R.id.btnordernow);
 		btnchkorders = (Button) findViewById(R.id.btnchkorders);
 		btncontactus = (Button) findViewById(R.id.btncontactus);
-		btnrateus = (Button)findViewById(R.id.btnrating);
+		btnrateus = (Button) findViewById(R.id.btnrating);
 
 		btnordernow.setOnClickListener(this);
 		btnchkorders.setOnClickListener(this);
 		btncontactus.setOnClickListener(this);
 		btnrateus.setOnClickListener(this);
-		
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		finish();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		finish();
+		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
@@ -46,7 +59,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 			break;
 		case R.id.btnrating:
-			
+
 			break;
 
 		}

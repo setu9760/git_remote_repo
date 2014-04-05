@@ -32,10 +32,12 @@
     <TextView
         android:id="@+id/lblsuccessmessage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_above="@+id/btnok"
         android:layout_below="@+id/lblorderplaced"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textColor="@color/yellow"
+        android:textSize="16dp" />
 
     <Button
         android:id="@+id/btnok"

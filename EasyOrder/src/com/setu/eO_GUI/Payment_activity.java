@@ -11,14 +11,16 @@ import com.setu.EasyOrder.R;
 import com.setu.eO_Logic.*;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-public class Payment_activity extends Activity implements OnClickListener {
+public class Payment_activity extends Activity {
 	private TextView lblorder;
 	private EditText txtfname;
 	private EditText txtsurname;
@@ -50,30 +52,45 @@ public class Payment_activity extends Activity implements OnClickListener {
 		txtemail = (EditText) findViewById(R.id.txtemail);
 		btnsubmit = (Button) findViewById(R.id.btnsubmit);
 		lblorder.setText("Total payment : £" + total);
-		btnsubmit.setOnClickListener(this);
 
+		btnsubmit.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				if (!(isEmpty(txtfname)) && !(isEmpty(txtsurname))
+						&& !(isEmpty(txtpostcode)) && !(isEmpty(txtpostcode))
+						&& !(isEmpty(txtcreditcard))
+						&& !(isEmpty(txtcreditcard))) {
+					if (submitorder()) {
+						/*
+						 * start success activity and set flags to clear history
+						 */
+						Intent intent = new Intent(Payment_activity.this,
+								Success_activity.class);
+						intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intent);
+						finish();
+					} else {
+						Log.i("Setu",
+								"order not submitted will exit the application");
+					}
+
+				} else {
+					displaytoast();
+				}
+			}
+		});
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnsubmit:
-			if (!(isEmpty(txtfname)) && !(isEmpty(txtsurname))
-					&& !(isEmpty(txtpostcode)) && !(isEmpty(txtpostcode))
-					&& !(isEmpty(txtcreditcard)) && !(isEmpty(txtcreditcard))) {
-				if (submitorder()) {
-					/*
-					 * start success activity and set flags to clear history
-					 */
-				}
-
-			} else {
-				Toast.makeText(this,
-						"All field are compulsory \nPlease enter all data",
-						Toast.LENGTH_LONG).show();
-			}
-			break;
-		}
+	public void displaytoast() {
+		Toast toast = Toast.makeText(getApplicationContext(), "",
+				Toast.LENGTH_LONG);
+		toast.setGravity(Gravity.CENTER, 0, 0);
+		toast.setText("Please enter all field." + "\nAll fields are compulsary");
+		toast.show();
 
 	}
 

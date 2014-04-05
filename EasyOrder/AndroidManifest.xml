@@ -45,6 +45,10 @@
             android:name="com.setu.eO_GUI.Payment_activity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.setu.eO_GUI.Success_activity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
