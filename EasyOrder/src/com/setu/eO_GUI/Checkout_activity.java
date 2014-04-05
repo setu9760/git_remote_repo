@@ -34,12 +34,14 @@ public class Checkout_activity extends Activity implements
 		setContentView(R.layout.checkout_screen);
 
 		Bundle bundle = getIntent().getExtras();
-		total = bundle.getDouble("key_total");
+		// total = bundle.getDouble("key_total");
+		subtotal = bundle.getDouble("key_subtotal");
 
 		listview = (ListView) findViewById(R.id.listview2);
 		btnpaynow = (Button) findViewById(R.id.btnpaynow);
 		tspayment = (TextView) findViewById(R.id.tspayment);
-		tspayment.setText(String.valueOf(total));
+		setorderstatus();
+		// tspayment.setText(String.valueOf(total));
 
 		newthread thread = new newthread();
 		thread.execute();

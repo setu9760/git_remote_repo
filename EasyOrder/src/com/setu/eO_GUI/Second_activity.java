@@ -125,6 +125,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 				Intent intent = new Intent(this, Checkout_activity.class);
 				Bundle bundle = new Bundle();
 				bundle.putDouble("key_total", this.total);
+				bundle.putDouble("key_subtotal", this.subtotal);
+				bundle.putDouble("key_taxes", this.taxes);
 				intent.putExtras(bundle);
 				startActivity(intent);
 			} catch (Exception e) {
