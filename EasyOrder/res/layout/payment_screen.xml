@@ -5,16 +5,28 @@
     android:background="@color/black_cat"
     android:padding="10dp" >
 
+    <TextView
+        android:id="@+id/lblorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="15dp"
+        android:padding="5dp"
+        android:textColor="@color/almond"
+        android:textSize="25sp" />
+
     <EditText
         android:id="@+id/txtfname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/lblorder"
         android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/fnamehint"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapSentences"
         android:textColor="@color/anti_flash_white"
         android:textColorHint="@color/anti_flash_white" >
 
@@ -30,7 +42,7 @@
         android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/snamehint"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapSentences"
         android:textColor="@color/anti_flash_white"
         android:textColorHint="@color/anti_flash_white" />
 
@@ -43,7 +55,7 @@
         android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/housenohint"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapCharacters"
         android:textColor="@color/anti_flash_white"
         android:textColorHint="@color/anti_flash_white" />
 
@@ -56,7 +68,7 @@
         android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/postcodehint"
-        android:inputType="textPostalAddress"
+        android:inputType="textPostalAddress|textCapCharacters"
         android:textColor="@color/anti_flash_white"
         android:textColorHint="@color/anti_flash_white" />
 

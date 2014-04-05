@@ -123,6 +123,9 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		case R.id.btncheckout:
 			try {
 				Intent intent = new Intent(this, Checkout_activity.class);
+				Bundle bundle = new Bundle();
+				bundle.putDouble("key_total", this.total);
+				intent.putExtras(bundle);
 				startActivity(intent);
 			} catch (Exception e) {
 				Log.e("Setu", "error in intent" + e);
@@ -195,6 +198,9 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	}
 
 	public void setorderstatus(Double subttotal) {
+		if (orderlist.size() == 1) {
+			this.subtotal = 0.0;
+		}
 		this.subtotal += subttotal;
 		this.taxes = (this.subtotal * VAT);
 		this.total = (this.subtotal + this.taxes);

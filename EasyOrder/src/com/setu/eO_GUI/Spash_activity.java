@@ -15,7 +15,7 @@ public class Spash_activity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_screen);
-		
+
 		new Handler().postDelayed(new Runnable() {
 
 			@Override
@@ -25,7 +25,6 @@ public class Spash_activity extends Activity {
 						MainActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
 			}
 		}, TIME_OUT);

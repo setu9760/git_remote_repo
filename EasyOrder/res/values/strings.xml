@@ -18,11 +18,13 @@
     <string name="splashlabel">Easy order</string>
     <string name="splashtext">Fast-food made faster</string>
     <string name="btnpaynow">Pay now</string>
-	<string name="fnamehint">First Name:</string>
-	<string name="snamehint">Surname: </string>
-	<string name="housenohint">House number:</string>
-	<string name="postcodehint">Post Code (without any spaces)</string>
-	<string name="creditcardhint">Card number (without any spaces)</string>
-	<string name="emailhint">abc_02@xyz.com</string>
-	<string name="btnsubmit">Submit</string>
+    <string name="fnamehint">First Name:</string>
+    <string name="snamehint">Surname: </string>
+    <string name="housenohint">House number:</string>
+    <string name="postcodehint">Post Code (without any spaces)</string>
+    <string name="creditcardhint">Card number (without any spaces)</string>
+    <string name="emailhint">abc_02@xyz.com</string>
+    <string name="btnsubmit">Submit</string>
+    <string name="tsorder">Total payment due</string>
+
 </resources>
