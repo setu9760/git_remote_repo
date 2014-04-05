@@ -12,18 +12,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class Order_adapter extends BaseAdapter  {
+public class Order_adapter extends BaseAdapter {
 	private final Context context;
-	public static List<String> product = new ArrayList<String>();
-	public static List<Double> price = new ArrayList<Double>();
+	public static List<String> product = null;
+	public static List<Double> price = null;
 	private LayoutInflater inflater;
 
 	public Order_adapter(Context context) {
+		product = new ArrayList<String>();
+		price = new ArrayList<Double>();
 		this.context = context;
 		this.inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -49,7 +49,7 @@ public class Order_adapter extends BaseAdapter  {
 		}
 		holder.product.setText(product.get(position));
 		holder.price.setText("£" + String.valueOf(price.get(position)));
-		
+
 		return convertview;
 	}
 

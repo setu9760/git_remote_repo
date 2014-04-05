@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +80,7 @@ public class Payment_activity extends Activity implements OnClickListener {
 	}
 
 	public boolean submitorder() {
-
+		DecimalFormat formatter = new DecimalFormat("##0.00");
 		fname = txtfname.getText().toString();
 		surname = txtsurname.getText().toString();
 		houseno = txthouseno.getText().toString();
@@ -105,11 +106,11 @@ public class Payment_activity extends Activity implements OnClickListener {
 			}
 			bfw.write("------------------------");
 			bfw.newLine();
-			bfw.write("Subtotal : £" + this.subtotal);
+			bfw.write("Subtotal : £" + formatter.format(this.subtotal));
 			bfw.newLine();
-			bfw.write("Taxes : £" + this.taxes);
+			bfw.write("Taxes : £" + formatter.format(this.taxes));
 			bfw.newLine();
-			bfw.write("Total : £" + this.total);
+			bfw.write("Total : £" + formatter.format(this.total));
 			bfw.close();
 			return true;
 		} catch (IOException e) {
