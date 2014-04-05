@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -37,17 +38,13 @@ public class Third_activity extends Activity implements OnItemClickListener {
 
 		Bundle bundle = getIntent().getExtras();
 		int position = bundle.getInt("KEY_P_POSITION");
-		
+
 		productlist = db.get_one_catagory_product(position);
 
 		for (All_products all_products : productlist) {
 			p_price.add(all_products.get_price());
 			p_item.add(all_products.get_item());
 			p_veg.add(all_products.get_veg());
-		}
-		for (int i = 0; i < p_price.size(); i++) {
-			Log.i("Setu", "price " + i + " is " + p_price.get(i) + "   "
-					+ p_item.get(i) + " -- " + p_veg.get(i));
 		}
 		listview = (ListView) findViewById(R.id.listview1);
 		product_adapter = new Products_adapter(this, p_item, p_price, p_veg);
@@ -58,10 +55,12 @@ public class Third_activity extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
 		bundle.putString("key_product", p_item.get(position));
-		Second_activity.orderlist.add(new Order(p_item.get(position),p_price.get(position)));
+		Second_activity.orderlist.add(new Order(p_item.get(position), p_price
+				.get(position)));
 		intent.putExtras(bundle);
 		setResult(RESULT_OK, intent);
 		finish();

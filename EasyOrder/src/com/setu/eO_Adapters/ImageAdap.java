@@ -78,7 +78,7 @@ public class ImageAdap extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 
-		return null;
+		return position;
 	}
 
 	@Override

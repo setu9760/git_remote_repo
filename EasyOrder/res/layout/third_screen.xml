@@ -3,7 +3,7 @@
     android:id="@+id/tsparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black" >
+    android:background="@color/black_cat" >
 
     <ListView
         android:id="@+id/listview1"

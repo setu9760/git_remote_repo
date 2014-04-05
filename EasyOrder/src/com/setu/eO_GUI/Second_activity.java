@@ -124,8 +124,12 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnsubmitorder:
-			Intent intent = new Intent(this, Checkout_activity.class);
-			startActivity(intent);
+			try {
+				Intent intent = new Intent(this, Checkout_activity.class);
+				startActivity(intent);
+			} catch (Exception e) {
+				Log.e("Setu", "error in intent" + e);
+			}
 			break;
 		case R.id.btnresetorder:
 			dialog1 = new AlertDialog.Builder(this);

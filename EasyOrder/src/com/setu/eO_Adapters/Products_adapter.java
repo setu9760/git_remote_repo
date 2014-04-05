@@ -84,8 +84,7 @@ public class Products_adapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-
-		return null;
+		return position;
 	}
 
 	@Override
