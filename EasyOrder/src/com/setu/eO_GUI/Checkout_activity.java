@@ -25,10 +25,12 @@ public class Checkout_activity extends Activity implements
 	private TextView tspayment;
 	private Double total;
 	private Double subtotal;
+	private Double taxes;
+	private final Double VAT = 0.065;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState = null);
 		setContentView(R.layout.checkout_screen);
 
 		Bundle bundle = getIntent().getExtras();
@@ -54,12 +56,14 @@ public class Checkout_activity extends Activity implements
 		@Override
 		protected Void doInBackground(Void... params) {
 			adapter = new Order_adapter(Checkout_activity.this);
+			adapter.notifyDataSetChanged();
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
+
 			listview.setAdapter(adapter);
 		}
 	}
@@ -105,9 +109,10 @@ public class Checkout_activity extends Activity implements
 		case R.id.btnpaynow:
 			Intent intent = new Intent(Checkout_activity.this,
 					Payment_activity.class);
+			setorderstatus();
 			Bundle bundle = new Bundle();
 			bundle.putDouble("key_total", this.total);
-			// bundle.putDouble("key_taxes", this.taxes);
+			bundle.putDouble("key_taxes", this.taxes);
 			bundle.putDouble("key_subtotal", this.subtotal);
 			intent.putExtras(bundle);
 			startActivity(intent);
@@ -121,7 +126,8 @@ public class Checkout_activity extends Activity implements
 		for (int i = 0; i < Order_adapter.price.size(); i++) {
 			this.subtotal += Order_adapter.price.get(i);
 		}
-		this.total = (subtotal * 0.065) + subtotal;
+		this.taxes = this.subtotal * VAT;
+		this.total = taxes + subtotal;
 		DecimalFormat formmater = new DecimalFormat("##0.00");
 		if (this.total == 0) {
 			btnpaynow.setEnabled(false);
