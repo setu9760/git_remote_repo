@@ -23,10 +23,8 @@ public class Checkout_activity extends Activity implements
 	private ListView listview;
 	private Button btnpaynow;
 	private TextView tspayment;
-	private Double subtotal = 0.0;
-	private Double total = 0.0;
-	private Double taxes = 0.0;
-	private final Double VAT = 0.065;
+	private Double total;
+	private Double subtotal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +107,7 @@ public class Checkout_activity extends Activity implements
 					Payment_activity.class);
 			Bundle bundle = new Bundle();
 			bundle.putDouble("key_total", this.total);
-			bundle.putDouble("key_taxes", this.taxes);
+			// bundle.putDouble("key_taxes", this.taxes);
 			bundle.putDouble("key_subtotal", this.subtotal);
 			intent.putExtras(bundle);
 			startActivity(intent);
@@ -123,15 +121,15 @@ public class Checkout_activity extends Activity implements
 		for (int i = 0; i < Order_adapter.price.size(); i++) {
 			this.subtotal += Order_adapter.price.get(i);
 		}
-		this.taxes = (this.subtotal * VAT);
-		this.total = (this.subtotal + this.taxes);
+		this.total = (subtotal * 0.065) + subtotal;
 		DecimalFormat formmater = new DecimalFormat("##0.00");
 		if (this.total == 0) {
 			btnpaynow.setEnabled(false);
 		}
-		tspayment.setText(" £"+String.valueOf(formmater.format(total)));
+		tspayment.setText(" £" + String.valueOf(formmater.format(total)));
 	}
-	public void finalbundle(){
-		
+
+	public void finalbundle() {
+
 	}
 }
