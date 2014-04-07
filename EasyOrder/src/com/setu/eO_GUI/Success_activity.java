@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 import com.setu.EasyOrder.R;
+import com.setu.eO_Adapters.Order_adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,7 +24,6 @@ public class Success_activity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.success_screen);
 
@@ -41,6 +41,7 @@ public class Success_activity extends Activity {
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
+				resetorder();
 				finish();
 			}
 		});
@@ -82,5 +83,15 @@ public class Success_activity extends Activity {
 		}
 
 		lblsuccessmessage.setText(sb.toString());
+	}
+
+	public void resetorder() {
+		/*
+		 * This method clears all the arraylists of order and resets them to
+		 * empty array list.
+		 */
+		Order_adapter.price.clear();
+		Order_adapter.product.clear();
+		Second_activity.orderlist.clear();
 	}
 }

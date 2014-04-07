@@ -56,7 +56,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 			break;
 		case R.id.btncontactus:
-
+			Intent intent2 = new Intent(MainActivity.this,
+					Contactus_activity.class);
+			startActivity(intent2);
 			break;
 		case R.id.btnrating:
 

@@ -19,7 +19,7 @@
         <activity
             android:name="com.setu.eO_GUI.Spash_activity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,6 +47,10 @@
         </activity>
         <activity
             android:name="com.setu.eO_GUI.Success_activity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.setu.eO_GUI.Contactus_activity"
             android:screenOrientation="portrait" >
         </activity>
     </application>
