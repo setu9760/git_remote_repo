@@ -186,7 +186,7 @@ public class DBhelper extends SQLiteOpenHelper {
 	/*
 	 * PRIVATE VARIABLE DECLARATION / ********DO NOT MODIFY*******
 	 */
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3;
 	private static final String DATABASE_NAME = "EasyOrder";
 	private static final String TABLE_SELECTION = "selection";
 	private static final String TABLE_PIZZA = "pizza";

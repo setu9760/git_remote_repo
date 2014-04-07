@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/android_splash" >
+    android:background="@color/black_cat" >
 
     <TextView
         android:id="@+id/EOsplashlabel"
@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/splashlabel"
-        android:textColor="@color/almond"
+        android:textColor="@color/android_green"
         android:textSize="40sp"
         android:textStyle="italic"
         android:typeface="monospace" />
@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/splashtext"
-        android:textColor="@color/almond"
+        android:textColor="@color/android_green"
         android:textSize="20sp"
         android:textStyle="italic"
         android:typeface="monospace" >
@@ -32,7 +32,7 @@
 
     <ProgressBar
         android:id="@+id/progressBar1"
-        style="@color/almond"
+        style="@color/android_green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/EOsplashlabel"

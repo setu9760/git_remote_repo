@@ -53,7 +53,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.btnchkorders:
-
+			Toast.makeText(this,
+					"Not Implemented Yet \nPlease check back later",
+					Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.btncontactus:
 			Intent intent2 = new Intent(MainActivity.this,
@@ -61,7 +63,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(intent2);
 			break;
 		case R.id.btnrating:
-
+			Toast.makeText(this,
+					"Not Implemented Yet \nPlease check back later",
+					Toast.LENGTH_SHORT).show();
 			break;
 
 		}
