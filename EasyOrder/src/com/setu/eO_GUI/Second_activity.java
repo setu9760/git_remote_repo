@@ -81,8 +81,10 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 		Intent intent = new Intent(Second_activity.this, Third_activity.class);
+		String item = selectionlist.get(position).get_item();
 		Bundle bundle = new Bundle();
 		bundle.putInt("KEY_P_POSITION", ++position);
+		bundle.putString("KEY_ITEM", item);
 		intent.putExtras(bundle);
 		startActivityForResult(intent, 1);
 	}

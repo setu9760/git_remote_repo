@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -27,11 +28,14 @@ public class Checkout_activity extends Activity implements
 	private Double subtotal;
 	private Double taxes;
 	private final Double VAT = 0.065;
+	DecimalFormat formmater = new DecimalFormat("##0.00");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState = null);
 		setContentView(R.layout.checkout_screen);
+		setTitle("Checkout");
 
 		Bundle bundle = getIntent().getExtras();
 		total = bundle.getDouble("key_total");
@@ -39,7 +43,10 @@ public class Checkout_activity extends Activity implements
 		listview = (ListView) findViewById(R.id.listview2);
 		btnpaynow = (Button) findViewById(R.id.btnpaynow);
 		tspayment = (TextView) findViewById(R.id.tspayment);
-		tspayment.setText(String.valueOf(total));
+		setorderstatus(total);
+
+		// DecimalFormat formmater = new DecimalFormat("##0.00");
+		// tspayment.setText(formmater.format(total));
 
 		newthread thread = new newthread();
 		thread.execute();
@@ -128,14 +135,15 @@ public class Checkout_activity extends Activity implements
 		}
 		this.taxes = this.subtotal * VAT;
 		this.total = taxes + subtotal;
-		DecimalFormat formmater = new DecimalFormat("##0.00");
+
 		if (this.total == 0) {
 			btnpaynow.setEnabled(false);
 		}
-		tspayment.setText(" £" + String.valueOf(formmater.format(total)));
+		tspayment.setText(" £" + formmater.format(total));
 	}
 
-	public void finalbundle() {
-
+	public void setorderstatus(Double total) {
+		tspayment.setText(" £" + formmater.format(total));
 	}
+
 }

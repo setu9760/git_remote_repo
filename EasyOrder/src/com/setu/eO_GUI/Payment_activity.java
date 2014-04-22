@@ -32,6 +32,7 @@ public class Payment_activity extends Activity {
 	private final List<Order> finalorder = Second_activity.orderlist;
 	private String fname, surname, houseno, postcode, email;
 	private Double total, subtotal, taxes;
+	private final DecimalFormat formatter = new DecimalFormat("##0.00");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class Payment_activity extends Activity {
 		txtcreditcard = (EditText) findViewById(R.id.txtcreditcard);
 		txtemail = (EditText) findViewById(R.id.txtemail);
 		btnsubmit = (Button) findViewById(R.id.btnsubmit);
-		lblorder.setText("Total payment : £" + total);
+		lblorder.setText("Total payment : £" + formatter.format(total));
 
 		btnsubmit.setOnClickListener(new OnClickListener() {
 
@@ -95,7 +96,6 @@ public class Payment_activity extends Activity {
 	}
 
 	public boolean submitorder() {
-		DecimalFormat formatter = new DecimalFormat("##0.00");
 		fname = txtfname.getText().toString();
 		surname = txtsurname.getText().toString();
 		houseno = txthouseno.getText().toString();

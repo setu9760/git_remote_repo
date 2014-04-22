@@ -19,7 +19,7 @@
         <activity
             android:name="com.setu.eO_GUI.Spash_activity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,9 @@
             android:name="com.setu.eO_GUI.Second_activity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.setu.eO_GUI.Third_activity" >
+        <activity
+            android:name="com.setu.eO_GUI.Third_activity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.setu.eO_GUI.Checkout_activity"

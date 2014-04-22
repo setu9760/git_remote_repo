@@ -1,5 +1,6 @@
 package com.setu.eO_Adapters;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class Products_adapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
+		DecimalFormat format = new DecimalFormat("#0.00");
 		ViewHolder holder;
 
 		if (convertView == null) {
@@ -55,7 +56,7 @@ public class Products_adapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.product.setText(this.products.get(position));
-		holder.price.setText("£" + String.valueOf(this.price.get(position)));
+		holder.price.setText("£" + format.format(this.price.get(position)));
 		Integer temp_veg = _veg.get(position);
 		switch (temp_veg) {
 		case 0:

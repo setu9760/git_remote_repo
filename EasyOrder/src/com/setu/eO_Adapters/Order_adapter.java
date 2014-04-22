@@ -1,5 +1,6 @@
 package com.setu.eO_Adapters;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class Order_adapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertview, ViewGroup parent) {
 		viewholder holder;
+
+		DecimalFormat format = new DecimalFormat("#0.00");
 		Log.i("Setu", "getview called");
 		if (convertview == null) {
 			convertview = inflater.inflate(R.layout.view_listview2, null);
@@ -48,7 +51,7 @@ public class Order_adapter extends BaseAdapter {
 			holder = (viewholder) convertview.getTag();
 		}
 		holder.product.setText(product.get(position));
-		holder.price.setText("£" + String.valueOf(price.get(position)));
+		holder.price.setText("£" + format.format(price.get(position)));
 
 		return convertview;
 	}

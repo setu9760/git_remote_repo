@@ -12,6 +12,8 @@ import com.setu.eO_Logic.Order;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -36,6 +38,8 @@ public class Third_activity extends Activity implements OnItemClickListener {
 
 		Bundle bundle = getIntent().getExtras();
 		int position = bundle.getInt("KEY_P_POSITION");
+		String item = bundle.getString("KEY_ITEM");
+		setTitle(item);
 
 		productlist = db.get_one_catagory_product(position);
 
@@ -53,7 +57,6 @@ public class Third_activity extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-
 		Intent intent = new Intent();
 		Bundle bundle = new Bundle();
 		bundle.putString("key_product", p_item.get(position));
