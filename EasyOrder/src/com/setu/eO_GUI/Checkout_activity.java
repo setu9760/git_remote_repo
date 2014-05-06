@@ -45,9 +45,6 @@ public class Checkout_activity extends Activity implements
 		tspayment = (TextView) findViewById(R.id.tspayment);
 		setorderstatus(total);
 
-		// DecimalFormat formmater = new DecimalFormat("##0.00");
-		// tspayment.setText(formmater.format(total));
-
 		newthread thread = new newthread();
 		thread.execute();
 
@@ -63,6 +60,7 @@ public class Checkout_activity extends Activity implements
 		@Override
 		protected Void doInBackground(Void... params) {
 			adapter = new Order_adapter(Checkout_activity.this);
+			
 			adapter.notifyDataSetChanged();
 			return null;
 		}

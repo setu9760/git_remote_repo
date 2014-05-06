@@ -1,8 +1,24 @@
 package com.setu.eO_GUI;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.setu.EasyOrder.*;
 import com.setu.eO_Adapters.ImageAdap;
@@ -11,6 +27,7 @@ import com.setu.eO_Logic.*;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,6 +43,9 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 	private final Double VAT = 0.065;
 
+	// private final String link =
+	// "http://androidphpmysql.comlu.com/easyorder/";
+
 	private ImageAdap imageadap;
 	private GridView gridview;
 	private AlertDialog.Builder dialog1;
@@ -36,14 +56,12 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	private Double total = 0.0;
 	private Double taxes = 0.0;
 
-	private List<Selection> selectionlist;
-	private List<Integer> sel_id = new ArrayList<Integer>();
-	private List<String> sel_list = new ArrayList<String>();
-
 	public static List<Order> orderlist = new ArrayList<Order>();
 
 	DBhelper db;
 	Order order;
+
+	ProgressDialog pd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +71,6 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		db = new DBhelper(this);
 		@SuppressWarnings("unused")
 		final InitDB init = new InitDB(Second_activity.this);
-
-		selectionlist = db.getallselection();
-		for (Selection selection : selectionlist) {
-			sel_id.add(selection.get_id());
-			sel_list.add(selection.get_item());
-			Log.i("Setu", "ID count: " + sel_id.size());
-		}
-
 		gridview = (GridView) findViewById(R.id.gridview1);
 		btncheckout = (Button) findViewById(R.id.btncheckout);
 		btnresetorder = (Button) findViewById(R.id.btnresetorder);
@@ -81,7 +91,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 		Intent intent = new Intent(Second_activity.this, Third_activity.class);
-		String item = selectionlist.get(position).get_item();
+
+		String item = Splash_activity.sel_list.get(position);// selectionlist.get(position).get_item();
 		Bundle bundle = new Bundle();
 		bundle.putInt("KEY_P_POSITION", ++position);
 		bundle.putString("KEY_ITEM", item);
@@ -93,6 +104,7 @@ public class Second_activity extends Activity implements OnItemClickListener,
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
+
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.setTitle("Alert");
 			alert.setMessage("Your order will reset." + "\n" + "Are you sure?");
@@ -102,6 +114,10 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							orderlist.clear();
+							btncheckout.setEnabled(false);
+							btnresetorder.setEnabled(false);
+							setorderstatus(subtotal = 0.0);
 							finish();
 						}
 					});
@@ -230,8 +246,18 @@ public class Second_activity extends Activity implements OnItemClickListener,
 
 	private class newthread extends AsyncTask<Void, Void, Void> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pd = new ProgressDialog(Second_activity.this);
+			pd.setTitle("Please Wait");
+			pd.setMessage("Fetching data");
+			pd.show();
+		}
+
+		@Override
 		protected Void doInBackground(Void... params) {
-			imageadap = new ImageAdap(Second_activity.this, sel_list, sel_id);
+			imageadap = new ImageAdap(Second_activity.this,
+					Splash_activity.sel_list, Splash_activity.sel_id);
 			return null;
 		}
 
@@ -239,6 +265,8 @@ public class Second_activity extends Activity implements OnItemClickListener,
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			gridview.setAdapter(imageadap);
+			pd.dismiss();
 		}
+
 	}
 }

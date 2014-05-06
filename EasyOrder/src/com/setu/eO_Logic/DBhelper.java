@@ -23,12 +23,13 @@ public class DBhelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		try {
-			db.execSQL(CREATE_TABLE1_SELECTION);
+			//db.execSQL(CREATE_TABLE1_SELECTION);
 			db.execSQL(CREATE_TABLE2_PIZZA);
+			Log.i("Setu", "database ceated");
 		} catch (SQLException e) {
 			Log.e("Setu", "sql error: " + e);
 		}
-		Log.i("Setu", "database ceated");
+		
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class DBhelper extends SQLiteOpenHelper {
 		if (oldVersion < newVersion) {
 			Log.w("Setu", "Upgrading form version " + oldVersion + "to "
 					+ newVersion + "\n all data destroyed");
-			db.execSQL("DROP TABLE IF EXISTS " + TABLE_SELECTION);
+			//db.execSQL("DROP TABLE IF EXISTS " + TABLE_SELECTION);
 			db.execSQL("DROP TABLE IF EXISTS " + TABLE_PIZZA);
 			onCreate(db);
 		}
@@ -97,12 +98,12 @@ public class DBhelper extends SQLiteOpenHelper {
 	 */
 	public List<Selection> getallselection() {
 		List<Selection> selectionlist = new ArrayList<Selection>();
-		SQLiteDatabase db = this.getReadableDatabase();
+		/*SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(ALL_SELECTION_QUERY, null);
-		/*
+		
 		 * Looping through all the rows of the table and passing row as
 		 * selection object and adding it to the selectionlist list.
-		 */
+		 
 		if (cursor.moveToFirst()) {
 			do {
 				Selection selection = new Selection();
@@ -112,7 +113,7 @@ public class DBhelper extends SQLiteOpenHelper {
 			} while (cursor.moveToNext());
 		}
 		db.close();
-		cursor.close();
+		cursor.close();*/
 		return selectionlist;
 	}
 
